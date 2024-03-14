@@ -7,11 +7,48 @@ function App() {
     JSON.parse(localStorage.getItem("boards")) || [
       {
         id: Date.now() + Math.random() * 2,
-        title: "To do",
+        title: "Things To do",
         cards: [
           {
             id: Date.now() + Math.random(),
-            title: "Card 1",
+            title: "Graphic design for promotion purpose.",
+            date: "",
+          },
+          {
+            id: Date.now() + Math.random(),
+            title: "Event categories for promotion.",
+            date: "",
+          },
+        ],
+      },
+      {
+        id: Date.now() + Math.random() * 2,
+        title: "Doing",
+        cards: [
+          {
+            id: Date.now() + Math.random(),
+            title: "video editing for instagram add.",
+            date: "",
+          },
+          {
+            id: Date.now() + Math.random(),
+            title: "promotional video creation.",
+            date: "",
+          },
+        ],
+      },
+      {
+        id: Date.now() + Math.random() * 2,
+        title: "Done",
+        cards: [
+          {
+            id: Date.now() + Math.random(),
+            title: "packaging design for holi festival.",
+            date: "",
+          },
+          {
+            id: Date.now() + Math.random(),
+            title: "learn new design for upcoming development.",
             date: "",
           },
         ],
@@ -83,12 +120,12 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-1 w-full h-[100vh]">
+    <div className="flex flex-col gap-4 p-1 w-[100vw] h-[100vh]">
       <div className="text-white">
         <Navbar addBoard={(value) => addBoard(value)} />
       </div>
       <div className="text-white w-full p-4 flex-1 overflow-x-auto">
-        <div className="flex gap-8 min-w-fit w-full h-[100%]">
+        <div className="flex flex-col gap-8 w-full h-[100%] md:flex-row">
           {boards.map((item) => {
             return (
               <Board
