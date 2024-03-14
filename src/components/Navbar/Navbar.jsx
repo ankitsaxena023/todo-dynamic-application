@@ -1,7 +1,8 @@
 import React from "react";
 import { MoreVertical, Home, Star } from "react-feather";
+import AddCard from "../AddCard/AddCard";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div className="flex items-center justify-between w-full bg-slate-800 h-16 rounded-sm">
       <div className="flex items-center gap-4">
@@ -14,10 +15,12 @@ const Navbar = () => {
         </div>
         <p>Thriving Technology</p>
       </div>
-      <div>
-        <button className="px-3 py-3 bg-indigo-800 rounded-full text-sm font-semibold cursor-pointer hover:bg-indigo-500 transition-all delay-250 mr-2">
-          Create new board
-        </button>
+      <div className="px-3 py-2 w-52 text-sm font-semibold cursor-pointer  transition-all delay-250 mr-2">
+        <AddCard
+          text="Create new board"
+          placeholder="Enter board name"
+          onSubmit={(value) => props.addBoard(value)}
+        />
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { X } from "react-feather";
 
-const AddCard = () => {
+const AddCard = (props) => {
   const [isShowAddCard, setIsShowAddCard] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <div>
@@ -10,12 +11,19 @@ const AddCard = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            if (props.onSubmit) props.onSubmit(inputValue);
+            setInputValue("");
+            setIsShowAddCard(false);
           }}
           className="flex flex-col gap-4"
         >
           <input
+            autoFocus
             type="text"
-            className="outline-none py-1 rounded-md text-md text-black"
+            className="outline-none py-1 rounded-md text-md text-black mt-4"
+            placeholder={props.placeholder || "Add To Do Task"}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           <div className="flex w-full justify-center items-center gap-8">
             <button
@@ -34,10 +42,10 @@ const AddCard = () => {
       ) : (
         <div className="cursor-pointer">
           <p
-            className=" w-full bg-slate-800 h-10 flex items-center justify-center"
+            className=" w-full bg-slate-500 h-10 flex items-center justify-center"
             onClick={() => setIsShowAddCard(true)}
           >
-            Add another card
+            {props.text || "Add another card"}
           </p>
         </div>
       )}
